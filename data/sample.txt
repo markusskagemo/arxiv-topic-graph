@@ -1,0 +1,2369 @@
+ Portfolio Optimization under Fast Mean-reverting and Rough
+
+Fractional Stochastic Environment
+
+Jean-Pierre Fouque∗
+
+Ruimeng Hu†
+
+January 25, 2019
+
+Abstract
+
+Fractional stochastic volatility models have been widely used to capture the non-Markovian struc-
+ture revealed from ﬁnancial time series of realized volatility. On the other hand, empirical studies have
+identiﬁed scales in stock price volatility: both fast-time scale on the order of days and slow-scale on
+the order of months. So, it is natural to study the portfolio optimization problem under the eﬀects of
+dependence behavior which we will model by fractional Brownian motions with Hurst index H, and
+in the fast or slow regimes characterized by small parameters ǫ or δ. For the slowly varying volatility
+with H ∈ (0, 1), it was shown that the ﬁrst order correction to the problem value contains two terms of
+order δH , one random component and one deterministic function of state processes, while for the fast
+2 , the same form holds at order ǫ1−H . This paper is dedicated to the remaining
+varying case with H > 1
+case of a fast-varying rough environment (H < 1
+2 ) which exhibits a diﬀerent behavior. We show that,
+in the expansion, only one deterministic term of order √ǫ appears in the ﬁrst order correction.
+
+Keywords: Optimal portfolio, rough stochastic volatility, fractional Ornstein–Uhlenbeck process,
+
+martingale distortion, asymptotic optimality.
+
+1
+
+Introduction
+
+Portfolio optimization in continuous time was originally studied by Merton [1969, 1971]. In this celebrated
+work, explicit solutions are provided on how to allocate wealth between risky and risk-less assets, and how
+to consume wealth so that expected utility is maximized. The model there for the underlying assets is
+the Black–Scholes–Merton model, and the utility functions are of speciﬁc type, for instance, of Constant
+Relative Risk Aversion (CRRA) type.
+
+In this paper, we study the Merton problem with power utility under a non-Markovian stochastic
+environment that is fast mean-reverting. Such proposed modeling is supported by recent studies. It is
+shown that stochastic volatility has rapidly decaying correlations at the origin. A common approach for
+modeling short-range dependence is by using fractional Brownian motion (fBm) processes with H < 1/2,
+see Gatheral et al. [2014]. On the other hand, empirical study in Fouque et al. [2003] shows that, in order
+to ﬁt well the implied volatility, it is appropriate to consider at least short-time scales volatility. To combine
+these two features, we let the underlying asset follow a Geometric Brownian motion-like model, and we let
+its return and volatility be driven by a fast-varying factor Y ǫ,H
+
+characterized as the solution of
+
+t
+
+dY ǫ,H
+
+t = −
+
+a
+ǫ
+
+Y ǫ,H
+t
+
+dt +
+
+1
+ǫH dW (H)
+
+t
+
+.
+
+9
+1
+0
+2
+
+ 
+
+n
+a
+J
+ 
+
+4
+2
+
+.
+
+ 
+ 
+]
+F
+M
+n
+i
+f
+-
+q
+[
+ 
+ 
+
+3
+v
+2
+0
+0
+3
+0
+
+.
+
+4
+0
+8
+1
+:
+v
+i
+X
+r
+a
+
+For a full justiﬁcation/discussion about this model, we refer to Garnier and Sølna [2017b], where Y ǫ,H
+is
+ﬁrstly introduced. Here ǫ ≪ 1 is a small parameter, which makes Y ǫ,H
+fast-varying and its mean-reversion
+time scale proportional to ǫ, and, W (H)
+2 ). The solution to the
+above stochastic diﬀerential equation (SDE) is actually a fractional Ornstein–Uhlenbeck process. Some
+properties regarding Y ǫ,H
+are discussed in Section 2.2 as a preparation for the asymptotic derivations in
+Section 3. For further references on fBm and fOU processes, we refer to Mandelbrot and Van Ness [1968],
+Cheridito et al. [2003], Coutin [2007], Biagini et al. [2008], Kaarakka and Salminen [2011].
+
+denotes a fBm with Hurst index H ∈ (0, 1
+
+t
+
+t
+
+t
+
+t
+
+∗Department of Statistics & Applied Probability, University of California, Santa Barbara, CA 93106-3110,
+
+fouque@pstat.ucsb.edu. Work supported by NSF grant DMS-1409434 and DMS-1814091.
+
+†Department of Statistics, Columbia University, New York, NY 10027-4690, rh2937@columbia.edu. The work was mainly
+
+done when RH was a graduate student at the University of California, Santa Barbara.
+
+1
+
+Motivation and related literature. Main features and reasons to consider such a problem setup are
+the following.
+
+Firstly, the fOU process Y ǫ,H
+
+is Gaussian and it admits a convenient moving-average representation
+with respect to a well-studied kernel (cf. (2.10)). This maintains analytic tractability and simpliﬁes the
+derivation of needed estimates. However, the modeling of Y ǫ,H
+is not limited to fOU processes, and more
+general kernels can be considered. For example, an alternative model is analyzed in [Garnier and Sølna,
+2017b, Appendix B] for the linear pricing problem.
+
+t
+
+t
+
+Secondly, we choose to focus on power utilities and one factor model, which means the return and
+volatility of the underlying asset are driven by only one process. The reason is mainly due to tractability.
+In this case, a convenient martingale distortion transformation (MDT) is available to express the problem
+value and the optimal strategy, even under the non-Markovian modeling of Y ǫ,H
+. However, we remark that
+partial results can still be obtained under general utilities where MDT is not available, following a similar
+argument as in our previous work Fouque and Hu [2017b, 2018]. The details of this generalization will not
+be included here.
+
+is rough (H < 1
+
+Thirdly, the fOU process Y ǫ,H
+
+2 ) and fast mean-reverting (ǫ small). This is the missing
+case in our previous work Fouque and Hu [2017b, 2018], where the asset allocation problem is studied
+under a slowly varying fractional stochastic environment (fSE) with H ∈ (0, 1), corresponding to ǫ := 1/δ
+large, and under a fast varying fSE (ǫ small) with H > 1
+2 . Therefore, this paper completes the full picture
+of the analysis of the portfolio optimization problem in single-factored fractional stochastic environments.
+Fourthly, although it is natural to consider multiscale factor models for risky assets, with a fast factor
+and a slow factor as in Fouque et al. [2015] in a Markovian framework, the analysis requires more technical
+details, as the MDT is not available. This will be presented in another paper in preparation (Hu [2018b]).
+
+t
+
+t
+
+We now summarize the related existing literature in the following table.
+
+Table 1: Problems, models and expansion results. The acronyms used are: SV = Stochastic Volatility, SE
+= Stochastic Environment, AO = Asymptotic Optimality.
+
+Paper
+
+Problem
+
+Model
+
+SV + Multiscale
+
+Linear
+Option
+Pricing
+
+fSV + Slow (H ∈ (0, 1))
+fSV + Fast (H > 1
+2 )
+fSV + Fast (H < 1
+2 )
+SE + Multiscale
+
+Fouque et al. [2011]
+Garnier and Sølna [2017a]
+Garnier and Sølna [2016]
+Garnier and Sølna [2017b]
+Fouque et al. [2015]
+Fouque and Hu [2017a]
+Hu [2018a]
+Fouque and Hu [2017b]
+Fouque and Hu [2018]
+This paper
+∗ We denote by h(0) the leading order term in the expansion, and by h(0,1), h(1,0), h(1) the ﬁrst order
+corrections, where h = P for option pricing, and h = v for problem value of the optimization problem.
+The notation φδ (resp. φǫ) means a random component of order δH (resp. ǫ1−H).
+
+P (0) + φδ + δH P (1)
+P (0) + φǫ + ǫ1−H P (1)
+v(0) + √ǫv(1,0) + √δv(0,1)†
+AO of a zeroth order strategy
+AO of a zeroth order strategy
+
+fSE + Slow (H ∈ (0, 1))
+fSE + Fast (H > 1
+2 )
+fSE + Fast (H < 1
+2 )
+
+v(0) + φδ + δH v(1)
+v(0) + φǫ + ǫ1−H v(1)
+
+P (0) + √ǫP (1)
+
+SE + Slow
+SE + Fast
+
+v(0) + √ǫv(1)
+
+Optimization
+
+Nonlinear
+
+Portfolio
+
+† The expansion is heuristic except for the case of power utility and one factor.
+
+Main results. In this paper, we focus on one-factor models and we study the eﬀect of a fast time-scale
+on the optimal allocation problem under power utility. When the problem is Markovian, a PDE approach
+is preferred, since after a distortion transformation, ﬁrstly discovered in Zariphopoulou [1999], the PDE
+becomes linear where perturbation techniques usually work well. However, in the current setting, the fast
+factor is driven by a rough fBm and possesses short-range dependence. Nevertheless, the nice MDT is
+available and gives a representation of the value process as well as the optimal strategy. This was proved
+by Tehranchi [2004] via a conditional H¨older inequality, and by Frei and Schweizer [2008] via a BSDE
+approach in the case of exponential utility. Recently, it has been restated in Fouque and Hu [2017b] under
+the setup (2.1) with a short proof based on a veriﬁcation argument.
+
+2
+
+Form of Solution∗
+
+P (0) + √ǫP (1,0) + √δP (0,1)
+
+t
+
+Starting by applying MDT, we obtain the representation of the problem value and the optimal portfolio.
+We then expand them using the “ergodic property” of Y ǫ,H
+, and we deduce approximation results for both
+quantities. Unlike in the long-range dependent case H > 1
+2 in Fouque and Hu [2018], here, the ﬁrst order
+correction to the value process appear at √ǫ and contains only one term, which is a explicit function of
+the state processes. And, surprisingly, there is no correction term at order √ǫ for the optimal strategy.
+However, we are still able to show that the leading order strategy π(0)
+itself generates the value process
+up to its ﬁrst order √ǫ correction, which is obtained by the “epsilon-martingale decomposition” method.
+This approach was ﬁrstly introduced in Fouque et al. [2000, 2001] and frequently used in problems with
+small parameters, especially in non-Markovian settings as in Garnier and Sølna [2017a, 2016, 2017b].
+does not appear in the leading
+order nor in the correction of the value process. Moreover, up to order √ǫ, the expansion does not really
+depend on H, except through constants D and λ, see (3.1) -(3.2). We also observe that the limit H ↑ 1
+does not commute with the limit ǫ → 0 (see Section 3.5), which makes impossible to recover the results in
+the Markovian case provided in Fouque et al. [2015].
+
+We remark that our expansion is only valid when H ∈ (0, 1
+
+2 ) where Y ǫ,H
+
+2
+
+t
+
+t
+
+In Section 2, we revisit the martingale distortion transformation under
+Organization of the paper.
+general stochastic volatility models. This is derived in the Markovian case in Zariphopoulou [1999], and in
+non-Markovian settings in Tehranchi [2004], Frei and Schweizer [2008], Fouque and Hu [2017b]. Then the
+fast mean-reverting rough fractional stochastic environment (RFSE) is precisely described, that is, Y ǫ,H
+follows a ǫ-scaled fractional Ornstein–Uhlenbeck process. In Sections 3.1 and 3.2, we derive the asymptotic
+results under this modeling for the value process and optimal portfolio respectively. The asymptotic
+optimality of the leading order strategy π(0) is proved within all admissible strategies in Section 3.3.
+Finally, we compare the results with the Markovian case H = 1
+2 , and we comment on the inﬂuence of
+rough fractional model. We make conclusive remarks in Section 4.
+
+t
+
+2 Problem setup and preliminaries
+
+Denote by St the risky asset price at time t with both returns and volatility driven by a stochastic factor
+Yt:
+
+dSt = St [µ(Yt) dt + σ(Yt) dWt] .
+
+(2.1)
+
+Here Yt is a general stochastic process adapted to the ﬁltration Gt ≡ σ(W Y
+W Y . The two Brownian motions W and W Y are imperfectly correlated:
+
+s , s ≤ t) of a Brownian motion
+
+d(cid:10)Wt, W Y
+
+t (cid:11) = ρ dt,
+
+|ρ| < 1.
+
+(2.2)
+
+We deﬁne (Ft) as the natural ﬁltration generated by the two Brownian motions (Wt, W Y
+t ), and we shall
+use Yt to model the one factor stochastic environment. Later, in Section 3, Yt will be replaced by Y ǫ,H
+,
+which will be a fast mean-reverting fOU process.
+
+t
+
+To formulate the Merton problem under such a stochastic environment, we introduce the following
+notations. Denote by πt ∈ Ft the amount of money invested in the risky asset St at time t, and by X π
+the corresponding wealth process. The rest, X π
+t − πt is put into the bank account earning a constant
+interest rate r. Then, under self-ﬁnancing, and, without loss of generality, assuming a zero interest rate,
+the dynamics of X π
+t
+
+is given by:
+
+t
+
+dX π
+
+t = πtµ(Yt) dt + πtσ(Yt) dWt.
+
+In the Merton problem, the agent aims at ﬁnding the optimal allocation π so as to optimize the expected
+utility of her terminal wealth X π
+T . Mathematically, it consists in identifying the value process Vt deﬁned
+by
+
+Vt ≡ ess sup
+
+π∈At
+
+E [U (X π
+
+T )|Ft] ,
+
+(2.3)
+
+3
+
+and the corresponding optimal strategy π∗. Here U (·) is a utility function describing the agent’s preference.
+Throughout this paper, we shall work with power utilities, namely
+
+The set At is the collections of admissible strategies:
+
+U (x) =
+
+,
+
+γ > 0,
+
+γ 6= 1.
+
+x1−γ
+1 − γ
+
+At ≡ {π is (Ft)-adapted : X π
+
+s stays nonnegative ∀s ≥ t, given Ft} ,
+
+with the following integrability condition:
+
+sup
+
+t∈[0,T ]
+
+Eh(X π
+
+t )2p(1−γ)i < +∞, f or some p > 1,
+
+and E"Z T
+
+0
+
+(X π
+
+t )−2γ π2
+
+t σ2(Yt) dt# < ∞.
+
+In addition, Assumption 2.1 in Fouque and Hu [2018] is enforced throughout the paper.
+
+In Fouque and Hu [2017b], the representation of value process (2.3) and optimal strategy π∗ are given
+via a martingale distortion transformation. The rest of this section is a preparation for the main results
+presented in the next section. The martingale distortion transformation is reviewed, and the fast mean-
+reverting RFSE is introduced.
+
+2.1 Martingale distortion transformation
+
+The martingale distortion transformation was derived in Tehranchi [2004] with a slightly diﬀerent utility
+function, and, recently, stated in Fouque and Hu [2017b] under the same setup as in this paper. Since the
+results in next section heavily rely on this transformation, for reader’s convenience, we re-state it here.
+
+LeteP be an equivalent probability measure determined by the Radon–Nikodym derivative
+γ (cid:17) λ(Yt), and Sharpe-ratio λ(·) = µ(·)/σ(·). Then, deﬁne theeP-martingale
+
+= exp(−Z T
+
+with at = −ρ(cid:16) 1−γ
+
+s ds) ,
+
+2Z T
+
+deP
+
+as dW Y
+
+s −
+
+dP
+
+a2
+
+1−γ
+
+1
+
+0
+
+0
+
+where the parameter q is given in terms of the utility’s relative risk-aversion γ and the correlation coeﬃcient
+ρ by
+
+The martingale (Mt)t∈[0,T ] admits the representation
+
+(2.4)
+
+(2.5)
+
+(2.6)
+
+(2.7)
+
+Proposition 2.1 (Martingale Distortion Transformation). Under model assumptions, the value process Vt
+deﬁned in (2.3) is expressed by
+
+Mt ≡eEh e
+
+2qγ R T
+
+0 λ2(Ys) ds(cid:12)(cid:12)(cid:12)Gti ,
+
+γ
+
+q =
+
+γ + (1 − γ)ρ2 .
+
+Vt =
+
+t .
+
+t
+
+X 1−γ
+
+dMt = Mtξt dfW Y
+1 − γ heE(cid:16) e
+t =(cid:20) λ(Yt)
+
+2qγ R T
+
+γσ(Yt)
+
++
+
+1−γ
+
+π∗
+
+t λ2(Ys) ds(cid:12)(cid:12)(cid:12)Gt(cid:17)iq
+γσ(Yt)(cid:21) Xt,
+
+ρqξt
+
+.
+
+The expectationeE[·] is computed with respect toeP introduced in (2.4), and the parameter q is given in (2.6).
+
+The optimal strategy π∗ is
+
+(2.8)
+
+where ξt is given by the Martingale Representation Theorem in (2.7).
+
+4
+
+Proof. See [Fouque and Hu, 2017b, Proposition 2.2] for a detailed proof. Discussions about special cases
+(uncorrelated ρ = 0, degenerate Sharpe-ratio λ(y) = λ0, etc.) and generalization to multi-asset case can
+also be found therein.
+
+Remark 2.2. The model assumptions consist of the existence of a unique strong solution to (2.1), the
+coincidence between the ﬁltration generated by Yt and Gt, the regularity condition on λ(·) and integrability
+condition on ξt:
+(2.9)
+
+E[ec R T
+
+0 ξ2
+
+t dt] < ∞, for some constant c.
+
+They are actually the same as in our previous paper Fouque and Hu [2018]. So, for the sake of space,
+we omit the detailed description here, and refer to Assumption 2.1 and Remark 2.2 therein for further
+discussion.
+
+2.2 Modeling of the fast mean-reverting RFSE
+
+To accommodate the fast mean-reverting property in the stochastic environment, we introduce the small
+parameter ǫ in the modeling of Yt, and we switch to the notation Y ǫ,H
+to emphasize this dependence. The
+other superscript H comes from the Hurst index of the fractional Brownian motion that drives Y ǫ,H
+, see
+(2.11). Then, in the rest of this paper, Y ǫ,H
+
+plays the role of Yt in equation (2.1).
+
+t
+
+t
+
+t
+
+Following Garnier and Sølna [2017b], we deﬁne our fast factor Y ǫ,H
+
+by
+
+t
+
+Y ǫ,H
+
+t =Z t
+
+−∞ Kǫ(t − s) dW Y
+
+s , Kǫ(t) =
+
+1
+
+ǫ(cid:19) ,
+√ǫK(cid:18) t
+
+(2.10)
+
+where ǫ ≪ 1 is a small parameter, K(t) is a non-negative kernel taking the form
+
+1
+
+K(t) =
+
+Γ(H + 1
+
+2 )(cid:20)tH− 1
+
+2 − aZ t
+
+0
+
+(t − s)H− 1
+
+2 e−as ds(cid:21) ,
+
+2 ), (W Y
+t )t∈R− := (B−t)t∈R− is another Bm independent of (W Y
+
+with H ∈ (0, 1
+(2.2), and (W Y
+recovers the usual Markovian OU process. Such Y ǫ,H
+solution to the rescaled fractional Ornstein–Uhlenbeck (fOU) SDE:
+
+t )t∈R+ is the standard Brownian motion (Bm) that is correlated with Wt as given in
+t )t∈R+ and (Wt). The case H = 1
+2
+is actually the unique (in distribution) stationary
+
+t
+
+dY ǫ,H
+
+t = −
+
+a
+ǫ
+
+Y ǫ,H
+t
+
+dt +
+
+1
+ǫH dW (H)
+
+t
+
+,
+
+(2.11)
+
+t
+
+where W (H)
+is the fractional Brownian motion (fBm) with Hurst index H. Properties regarding this process
+(with or without scaling) has been widely studied, for instance, see Cheridito et al. [2003], Garnier and Sølna
+[2017b]. For the sake of simplicity, here, we only mention results that are related to our derivations in the
+sequel.
+
+The process Y ǫ,H
+
+t
+
+is Gaussian with mean zero and (co)variance structure:
+
+E(cid:20)(cid:16)Y ǫ,H
+
+t
+
+CY (s) ≡
+
+(cid:17)2(cid:21) ≡ σ2
+
+2 sin(πH)
+
+ou =
+
+π
+
+Z ∞
+
+0
+
+1
+2
+
+a−2H sin(πH)−1, EhY ǫ,H
+
+t
+
+cos(asx)
+
+x1−2H
+1 + x2 dx.
+
+Y ǫ,H
+
+t+si = σ2
+
+ouCY (cid:16) s
+ǫ(cid:17) ,
+
+(2.12)
+
+The form of covariance shows that the natural scale of Y ǫ,H
+
+invariant, which validates the way Kǫ(t) is rescaled in (2.10). The kernel K(t) is in L2 withR ∞
+ou, and K(t) ∈ L1, when H < 1
+σ2
+2 .
+2
+Denote by λ
+
+the average with respect to the invariant distribution of fOU process N (0, σ2
+
+is ǫ as desired. The variance of Y ǫ,H
+
+stays
+0 K2(u) du =
+
+ou):
+
+t
+
+t
+
+2
+λ
+
+≡ZR
+
+λ2(z)
+
+1
+
+√2πσou
+
+e
+
+− z2
+2σ2
+
+ou dz
+
+5
+
+Then, the following diﬀerences between time averages and spacial averages are of importance in the deriva-
+tions:
+
+I ǫ
+
+φǫ
+
+s
+
+0 (cid:16)λ2(Y ǫ,H
+
+t ≡Z t
+t ≡ E"Z T
+
+t
+
+) − λ
+
+λ2(Y ǫ,H
+
+s
+
+) − λ
+
+2(cid:17) ds,
+ds(cid:12)(cid:12)(cid:12)(cid:12)Gt# .
+
+2
+
+(2.13)
+
+(2.14)
+
+By the ergodicity of Y ǫ,H
+and estimates regarding Y ǫ,H
+
+t
+
+t
+
+Furthermore, our fast factor Y ǫ,H
+
+t
+
+are also stated therein.
+
+satisﬁes the model assumption, and we state it as follows.
+
+, these diﬀerences are small and of order ǫ1−H , see Lemma A.1. More properties
+
+Lemma 2.3. Under model assumptions, the fast mean-reverting stationary fractional Ornstein–Uhlenbeck
+process Y ǫ,H
+
+deﬁned in (2.10) satisﬁes the integrability assumption (2.9).
+
+t
+
+Proof. This can be easily checked using the argument in [Fouque and Hu, 2017b, Lemma 3.1] and the fact
+
+0 Kǫ(s) ds is of order √ǫ. Therefore, we omit the details here.
+
+that Aǫ(T ) ≡R T
+
+3 Merton problem under fast-varying RFSE
+
+t
+
+with H restricted to H < 1
+
+In this section, we study the Merton problem (2.3) with power utility, when the stochastic environment
+is modeled by Y ǫ,H
+, this nonlinear problem is non-
+Markovian. This immediately rules out the Hamilton-Jacobi-Bellman PDE approach, which is usually
+an eﬃcient tool to analyze and ﬁnd approximations to control problems with small parameters involved.
+Nevertheless, Proposition 2.1 is available and we will start with applying it to our problem and then ﬁnd
+expansions based on it.
+
+2 . By the nature of Y ǫ,H
+
+t
+
+To be speciﬁc, we will give approximations of both the value process, denoted by V ǫ
+
+t and the corre-
+sponding optimal strategy π∗. This is done by applying Proposition 2.1 with Yt = Y ǫ,H
+, then by expanding
+the expressions (3.1) based on the properties mentioned in Section 2.2. We also show that the “leading
+order” strategy alone can produce the given approximation of V ǫ
+t . Finally, we compare the results with
+the Markovian case, and we comment on the eﬀects of taking into account the short-range dependence.
+
+t
+
+3.1 First order approximation to the value process
+
+Let St be the price of a risky asset in the fast mean-reverting RFSE:
+
+dSt = Sthµ(Y ǫ,H
+
+t
+
+) dt + σ(Y ǫ,H
+
+t
+
+) dWti ,
+
+where Y ǫ,H
+process X π
+
+t
+
+t becomes
+
+is the ǫ-scaled stationary fOU process with H < 1
+
+2 , deﬁned in (2.10). Accordingly, the wealth
+
+dX π
+
+t = πtµ(Y ǫ,H
+
+t
+
+) dt + πtσ(Y ǫ,H
+
+t
+
+) dWt,
+
+and the value process is denoted by V ǫ
+t :
+
+V ǫ
+t ≡ ess sup
+
+π∈Aǫ
+t
+
+E [U (X π
+
+T )|Ft] .
+
+We add the superscript ǫ to the problem value V ǫ
+on ǫ brought by Y ǫ,H
+
+.
+
+t
+
+t and to the admissible set Aǫ
+
+t to emphasize the dependence
+
+Directly applying Proposition 2.1 with Yt = Y ǫ,H
+
+t
+
+gives the following expression for V ǫ
+t :
+
+V ǫ
+t =
+
+t
+
+X 1−γ
+
+1 − γ heE(cid:16)e
+
+1−γ
+
+2qγ R T
+
+t λ2(Y ǫ,H
+
+s
+
+.
+
+) ds(cid:12)(cid:12)(cid:12)Gt(cid:17)iq
+
+(3.1)
+
+6
+
+(3.2)
+
+(3.3)
+
+Theorem 3.1. In the regime of ǫ small, under model assumptions, for ﬁxed t ∈ [0, T ), V ǫ
+
+t takes the form
+
+V ǫ
+t = Qǫ
+
+t(t, Xt) + o(√ǫ),
+
+where
+
+with v(0) and v(1) deﬁned as
+
+Qǫ(t, x) = v(0)(t, x) + √ǫρDv(1)(t, x),
+
+x1−γ
+1 − γ
+and the coeﬃcient D deﬁned by
+
+v(0)(t, x) ≡
+
+e
+
+2
+1−γ
+2γ λ
+
+(T −t),
+
+and v(1)(t, x) ≡
+
+1 − γ
+γ2 (T − t)x1−γ e
+
+2
+
+1−γ
+2γ λ
+
+(T −t),
+
+D ≡Z ∞
+
+0
+
+(cid:20)ZZR2
+
+λ(σouz)(λλ′)(σouz′)pCY (s)(z, z′) dz dz′(cid:21)K(s) ds.
+
+s
+
+s
+
+s
+
+s
+
+1−γ
+
+)−λ
+
+Ψǫ
+
+Ψǫ
+
+(3.4)
+
+= 1 +
+
+2qγ R T
+
+) − λ
+
+) − λ
+
+) − λ
+
+1 − γ
+
+1 − γ
+
+The function pC(z, z′) is the pdf of the bivariate normal distribution with mean zero and covariance matrix
+
+(cid:20) 1 C
+C 1(cid:21), and CY (s) is given in (2.12). As usual, the notation o(√ǫ) denotes an Ft-adapted random variable
+whose order is higher than √ǫ in the Lp sense, for any 1 ≤ p < 2(1 − H).
+
+t (cid:16)λ2(Y ǫ,H
+
+Using the fact that I ǫ
+
+with χ being the bounded Lagrange remainder. Observ-
+
+and then applying Taylor formula to the function xq.
+
+Proof. Given the representation (3.1) for V ǫ, the expansion result (3.2)-(3.3) can be obtained by ﬁrstly
+expanding
+
+) − λ
+for 1 ≤ p < 2(1 − H).
+
+t is “small” and Taylor expansion of ex in x, one deduces
+
+2(cid:17) ds(cid:12)(cid:12)(cid:12)Gt(cid:21) ,
+2(cid:17) ds + R[t,T ](cid:12)(cid:12)(cid:12)Gt#
+2(cid:17) ds(cid:12)(cid:12)(cid:12)Gt# +eE(cid:2)R[t,T ]|Gt(cid:3) ,
+
+t ≡eE(cid:20)e
+t =eE"1 +
+2qγ Z T
+t (cid:16)λ2(Y ǫ,H
+qγ eE" 1
+2Z T
+t (cid:16)λ2(Y ǫ,H
+2(cid:17) dsi2
+where R[t,T ] = eχh 1−γ
+t (cid:16)λ2(Y ǫ,H
+2qγ R T
+ing that (cid:13)(cid:13)(cid:13)eE[R[t,T ]|Gt](cid:13)(cid:13)(cid:13)p ∼(cid:13)(cid:13)R[t,T ](cid:13)(cid:13)p by the conditional H¨older inequality and the boundedness of λ, and
+0 (cid:16)λ2(Y ǫ,H
+2(cid:17) ds ∼ o(√ǫ) in L2, we claim that eE(cid:2)R[t,T ]|Gt(cid:3) is of order higher than √ǫ in Lp
+that R T
+Deﬁne theeP-martingale bψǫ
+t =eE"Z T
+bψǫ
+It remains to ﬁnd the expansion of bψǫ
+
+) ds(cid:12)(cid:12)(cid:12)Gt# , G(y) =
+t up to order √ǫ. To condense the notation in the following derivation,
+t ≡ E" 1
+2Z T
+0 (cid:16)λ2(Y ǫ,H
+t ≡Z T
+E(cid:2)G′(Y ǫ,H
+t ≡eE" 1
+2Z T
+0 (cid:16)λ2(eY ǫ,H
+eψǫ
+t ≡Z T
+eϑǫ
+t eE[G′(eY ǫ,H
+
+2(cid:17) ds(cid:12)(cid:12)(cid:12)Gt# ,
+)|Gt(cid:3)Kǫ(s − t) ds,
+2(cid:17) ds(cid:12)(cid:12)(cid:12)Gt# ,
+
+t with its martingale representation by
+
+dbψǫ
+t = bϑǫ
+
+)|Gt]Kǫ(s − t) ds,
+
+t dfW Y
+
+(λ2(y) − λ
+
+we also deﬁne
+
+) − λ
+
+) − λ
+
+G(Y ǫ,H
+
+(3.8)
+
+(3.9)
+
+(3.6)
+
+(3.7)
+
+(3.5)
+
+t .
+
+ψǫ
+
+1
+2
+
+ϑǫ
+
+),
+
+0
+
+2
+
+s
+
+s
+
+s
+
+s
+
+s
+
+s
+
+t
+
+7
+
+s
+
+s
+
+s
+
+s
+
+s
+
+s
+
+s
+
+s
+
+s
+
+s
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+)
+
+ϑǫ
+
+ϑǫ
+
+(Y ǫ,H
+
+)(Y ǫ,H
+
+t dW Y
+
+t = ϑǫ
+
+G(Y ǫ,H
+
+where ψǫ
+
+ϑǫ
+s dW Y
+
+G′′(χs)(Y ǫ,H
+
+t is a P-martingale satisfying dψǫ
+
+t , see Lemma A.1(i) for details. By a similar argument,
+t and
+
+t . The diﬀerence between ϑǫ
+
+t dfW Y
+
+t = eϑǫ
+
+G(eY ǫ,H
+
+G(eY ǫ,H
+
+With all above preparations, we deduce:
+
+) du ds(cid:12)(cid:12)(cid:12)G0#
+
+t is of order ǫ and this is discussed in Lemma A.2(ii).
+
+t admitting the representation deψǫ
+
+(Taylor expanding G(y) at y = eY ǫ,H
+
+we have theeP-martingale eψǫ
+eϑǫ
+t =eE"Z T
+) ds(cid:12)(cid:12)(cid:12)G0# +Z t
+0 bϑǫ
+bψǫ
+s dfW Y
+=eE"Z T
+) ds(cid:12)(cid:12)(cid:12)G0# +eE"Z T
+) ds(cid:12)(cid:12)(cid:12)G0#
+s −eY ǫ,H
+G′(eY ǫ,H
++eE"Z T
+)2 ds(cid:12)(cid:12)(cid:12)G0# +Z t
+s +Z t
+(bϑǫ
+s dfW Y
+s) dfW Y
+s −eY ǫ,H
+s − ϑǫ
+s ∼ O(√ǫ),bϑǫ
+s −eY ǫ,H
+s ∼ O(ǫ) and the relation between W Y and fW Y )
+s − ϑǫ
+=eE"Z T
+) ds(cid:12)(cid:12)(cid:12)G0# +eE"Z T
+γ (cid:19) λ(Y ǫ,H
+0 Kǫ(s − u)ρ(cid:18) 1 − γ
+)Z s
+G′(eY ǫ,H
+sρ(cid:18) 1 − γ
+γ (cid:19) λ(Y ǫ,H
+s −Z t
++Z t
+) ds(cid:12)(cid:12)(cid:12)G0# +Z t
+γ (cid:19) (√ǫ Dt + κǫ
+γ (cid:19)eE"Z T
+0 eϑǫ
+γ (cid:19)eE"Z T
+γ (cid:19)√ǫ D(T − t) + ρ(cid:18) 1 − γ
+γ (cid:19)√ǫ D(T − t) + o(√ǫ).
+
+= E"Z T
+− ρ(cid:18) 1 − γ
+t + ρ(cid:18) 1 − γ
+t + ρ(cid:18) 1 − γ
+t + ρ(cid:18) 1 − γ
+t + ρ(cid:18) 1 − γ
+
+) du(cid:12)(cid:12)(cid:12)G0# − ρ(cid:18) 1 − γ
+) du(cid:12)(cid:12)(cid:12)G0# − ρ(cid:18) 1 − γ
+γ (cid:19)eE"Z T
+
+t −eϑǫ
+) − √ǫ D du(cid:12)(cid:12)(cid:12)G0# + o(√ǫ)
+
+(eY ǫ,H
+γ (cid:19)eE"Z T
+0 Z T
+u eE[G′(eY ǫ,H
+
+γ (cid:19)√ǫ Dt + o(√ǫ)
+γ (cid:19)√ǫ Dt + o(√ǫ)
+
+s + ρ(cid:18) 1 − γ
+
+)|Gu]Kǫ(s − u) dsλ(Y ǫ,H
+
+tk2 ∼ o(√ǫ))
+
+tk2 ∼ o(√ǫ))
+
+t and eϑǫ
+
+t, and kκǫ
+
+(expression of ψǫ
+
+) ds + O(ǫ)
+
+|G0 and the deﬁnition of κǫ
+t)
+
+t ∼ O(ǫ))
+
+t) + O(ǫ)
+
+ϑǫ
+uλ(Y ǫ,H
+
+ϑǫ
+uλ(Y ǫ,H
+
+uλ(Y ǫ,H
+
+ϑǫ
+s dW Y
+
+D= Y ǫ,H
+
+G(Y ǫ,H
+
+(kκǫ
+
+= ψǫ
+
+= ψǫ
+
+= ψǫ
+
+= ψǫ
+
+|G0
+
+(ϑǫ
+
+u
+
+u
+
+u
+
+u
+
+u
+
+0
+
+0
+
+0
+
+0
+
+0
+
+s
+
+s
+
+s
+
+s
+
+s
+
+) du(cid:12)(cid:12)(cid:12)G0#
+
+All reasonings are mentioned in the parentheses from line to line and detailed statements can be found in
+) du from both sides of the above expansion, together with (3.5),
+
+Lemmas A.1–A.3. SubtractingR t
+
+(2.14) and (3.6), brings
+
+0 G(Y ǫ,H
+
+u
+
+Ψǫ
+
+t = 1 +
+
+= 1 +
+
+1 − γ
+
+qγ (cid:18)φǫ
+t + √ǫρ(cid:18) 1 − γ
+√ǫρ(cid:18) 1 − γ
+
+1 − γ
+qγ
+
+γ (cid:19) D(T − t) + o(√ǫ).
+
+γ (cid:19) D(T − t)(cid:19) + o(√ǫ)
+
+8
+
+(3.10)
+
+The last step follows from φǫ
+desired result
+
+t ∼ O(ǫ1−H ) (see Lemma A.1(ii)). Now, Taylor expanding xq produces the
+
+V ǫ
+t =
+
+=
+
+t
+
+X 1−γ
+1 − γ
+X 1−γ
+1 − γ
+
+t
+
+e
+
+e
+
+2
+1−γ
+2γ λ
+
+(T −t) (Ψǫ
+
+t)q
+
+2
+1−γ
+2γ λ
+
+(T −t)(1 + √ǫρ(cid:18) 1 − γ
+γ (cid:19)2
+
+D(T − t)) + o(√ǫ),
+
+where o(√ǫ) is in Lp sense, for any 1 ≤ p < 2(1 − H).
+
+Note that, unlike in the long-range dependent H > 1/2 case studied in Fouque and Hu [2018] where the
+ﬁrst order corrections consist of two terms (one random component φǫ
+t and one deterministic function in
+(t, Xt)) at order ǫ1−H , here, the correction appears at order √ǫ and contains only a deterministic function
+of (t, Xt). In other words, except for the constant D and λ, neither the fast factor Y ǫ,H
+nor the Hurst
+index H is visible in the leading order term nor in the ﬁrst order correction.
+
+t
+
+3.2 First order expansion of the optimal strategy
+
+The optimal portfolio π∗ is also of interest, if not the most important quantity. Under the RFSE described
+by Y ǫ,H
+
+, using the results in Proposition 2.1, the optimal strategy (2.8) takes the form
+
+t
+
+t =" λ(Y ǫ,H
+
+)
+γσ(Y ǫ,H
+
+t
+
+t
+
+)
+
+π∗
+
++
+
+ρqξt
+
+γσ(Y ǫ,H
+
+t
+
+)# Xt.
+
+(3.11)
+
+The term ξt is deﬁned by the martingale representation of eP-martingale Mt, and is in general not known
+
+explicitly. This brings extra diﬃculty when one wants to implement the optimal strategy π∗ to attain the
+problem value. However, at least in the regime of ǫ small, we can give the following approximation result
+for ξ and π∗.
+
+Theorem 3.2. Under model assumptions, we have the following approximation of the optimal strategy
+π∗
+t :
+
+ EZ T
+
+0
+
+(cid:12)(cid:12)(cid:12)π∗
+
+t − π(0)
+
+t
+
+dt!1/p
+
+p
+
+(cid:12)(cid:12)(cid:12)
+
+where π(0)
+
+t
+
+is the leading order strategy:
+
+∼ o(√ǫ),
+
+∀1 ≤ p < 2(1 − H),
+
+π(0)
+t
+
+:=
+
+t
+
+λ(Y ǫ,H
+)
+γσ(Y ǫ,H
+
+t
+
+)
+
+Xt.
+
+(3.12)
+
+Proof. This is done by obtaining the expansion of ξt from its deﬁnition (2.7). We rewrite Mt in terms of
+Ψǫ
+
+t by comparing (2.5) to (3.4),
+
+Mt = Ψǫ
+
+t e
+
+1−γ
+
+2qγ R t
+
+0 λ2(Y ǫ,H
+
+s
+
+) ds e
+
+1−γ
+
+2qγ λ2(T −t),
+
+and then, we use the approximation (3.10) of Ψǫ
+
+t. It has been shown that
+
+Ψǫ
+
+t = aǫ(t) + Rǫ(t),
+
+qγ √ǫρ(cid:16) 1−γ
+
+γ (cid:17) D(T − t) is of ﬁnite variation, and Rǫ(t) is of order o(√ǫ) in Lp, for
+where aǫ(t) = 1 + 1−γ
+1 ≤ p < 2(1 − H). This ensures that hRǫ(·), W (·)it ∼ o(√ǫ) in Lp by the following reasoning. Using L2
+representation theorem, for each t ∈ [0, T ], there exists an adapted process β(·), such that ER t
+0 β2(u) du <
+∞ and Rǫ(t) admits the representation
+
+Rǫ(t) = E[Rǫ(t)] +Z t
+
+0
+
+β(u) dWu.
+
+9
+
+= E|Rǫ(t) − E[Rǫ(t)]|p ≤ C(E|Rǫ(t)|p + Ep |Rǫ(t)|) ∼ o(√ǫ
+
+p
+
+),
+
+Since |E[Rǫ(t)]| ≤ (E|Rǫ(t)|p)1/p ∼ o(√ǫ), we deduce
+
+and
+
+E(cid:12)(cid:12)(cid:12)(cid:12)Z t
+
+0
+
+p
+
+β(u) dWu(cid:12)(cid:12)(cid:12)(cid:12)
+E|hRǫ, Wit|p ≤ EZ t
+
+the diﬀusion part at order √ǫ, meaning that R t
+
+assumptions, Mt is bounded, therefore
+
+Now applying Itˆo’s formula to the above expression of Mt, none of the three terms will contribute to
+
+0 |β(u)|p du ≤ CE(cid:12)(cid:12)(cid:12)(cid:12)Z t
+
+0
+
+β(u) dWu(cid:12)(cid:12)(cid:12)(cid:12)
+
+p
+
+≤ o(√ǫ
+
+p
+
+).
+
+0 Muξu du ∼ o(√ǫ) in Lp, for every t ∈ [0, T ]. By model
+
+Z t
+
+0
+
+ξu du ∼ o(√ǫ) in Lp,
+
+∀t ∈ [0, T ].
+
+the Lp(Ω × [0, T ]) norm, together with the estimates of ξt in
+
+0 |ξt|p dt(cid:17)1/p
+Denote by kξkp := (cid:16)ER T
+Lemma 2.3, that is, |ξ| ≤ C√ǫ for any t ∈ [0, T ], we have the desired approximation (3.12):
+dt!1/p
+(cid:12)(cid:12)(cid:12)
+
+=(cid:13)(cid:13)(cid:13)π∗ − π(0)(cid:13)(cid:13)(cid:13)p ≤ C kξXkp = C kξkpr kXkpq
+≤ C ′(cid:16)kξkp (√ǫ)r−1(cid:17)1/r
+∼ o(√ǫ).
+
+ EZ T
+
+t − π(0)
+
+(cid:12)(cid:12)(cid:12)π∗
+
+, where
+
+1
+q
+
+1
+r
+
++
+
+p
+
+0
+
+t
+
+= 1 and r, q > 1
+
+In the next subsection, we show the asymptotic optimality property of π(0) deﬁned in (3.12). That is,
+by only implementing π(0), the agent is able to obtain the ﬁrst order approximation (3.3) of the optimal
+value (3.1).
+
+3.3 Asymptotic optimality of π
+
+(0)
+t
+
+Let X π(0)
+
+t
+
+be the wealth process associated to π(0)
+
+t = λ(Y ǫ,H
+)
+γσ(Y ǫ,H
+)
+
+t
+
+t
+
+Xt:
+
+dX π(0)
+
+t = µ(Y ǫ,H
+λ2(Y ǫ,H
+
+t
+
+=
+
+t
+γ
+
+)π(0)
+
+t dt + σ(Y ǫ,H
+
+)
+
+X π(0)
+
+t
+
+dt +
+
+)π(0)
+t
+λ(Y ǫ,H
+
+t dWt
+)
+
+X π(0)
+
+t
+
+t
+γ
+
+dWt.
+
+(3.13)
+
+By the boundedness of λ(·), X π(0)
+tolerance function R(t, x) and the diﬀerential operator Dk, as in Fouque et al. [2015], by:
+
+To systematically simplify the notation in the derivation in Proposition 3.3, we introduce the risk-
+
+has pth-moment for any p, and this ensures the admissibility of π(0).
+
+t
+
+R(t, x) ≡ −
+
+v(0)
+x (t, x)
+v(0)
+xx (t, x)
+
+=
+
+x
+γ
+
+,
+
+and Dk ≡ R(t, x)k∂k
+
+x , ∀k ∈ N+.
+
+(3.14)
+
+Then, the wealth process X π(0)
+
+t
+
+can be written as
+
+dX π(0)
+
+t = λ2(Y ǫ,H
+
+t
+
+)R(t, X π(0)
+
+t
+
+) dt + λ(Y ǫ,H
+
+t
+
+)R(t, X π(0)
+
+t
+
+) dWt.
+
+We also introduce the nonlinear operator Lt,x(λ) by
+Lt,x(λ) ≡ ∂t +
+
+1
+2
+
+λ2D2 + λ2D1,
+
+10
+
+and one can check by straightforward calculation that v(0) satisﬁes
+
+Denote by V π(0),ǫ
+
+·
+
+the corresponding value process
+
+Lt,x(λ)v(0)(t, x) = 0.
+
+(3.15)
+
+V π(0),ǫ
+
+t
+
+:= Eh U(cid:16)X π(0)
+
+T (cid:17)(cid:12)(cid:12)(cid:12)Fti .
+
+In what follows, we aim to ﬁnd the approximation of V π(0),ǫ
+in the regime of ǫ small. This will be
+obtained via “epsilon-martingale decomposition”, ﬁrstly introduced in Fouque et al. [2000] to solve the
+linear pricing problem, and later developed in Fouque et al. [2001], Garnier and Sølna [2017a, 2016, 2017b],
+Fouque and Hu [2017b, 2018]. Roughly speaking, we need to construct an explicit function Qt for V π(0),ǫ
+in
+the form of a martingale plus something small (non-martingale part), which has the same terminal condition
+as V π(0),ǫ
+Detailed explanation can be found in the above references.
+
+. Then, this ansatz is indeed the approximation to V π(0),ǫ
+
+up to order of the non-martingale part.
+
+t
+
+t
+
+t
+
+t
+
+Proposition 3.3. Under model assumptions, for ﬁxed t ∈ [0, T ) and the observed value Xt, V π(0),ǫ
+
+t
+
+is
+
+approximated by
+
+V π(0),ǫ
+
+t
+
+= Qǫ
+
+t(Xt) + o(√ǫ),
+
+where Qǫ
+
+t is given in (3.3).
+
+The above Proposition combined with Theorem 3.1 immediately gives:
+is asymptotically optimal within all admissible strategy Aǫ
+
+t is of order o(√ǫ), which indicates that π(0)
+
+This is because V π(0),ǫ
+term plus the correction of order √ǫ given by (3.3).
+
+− V ǫ
+
+π(0)
+t
+
+t
+
+t
+
+t up to order √ǫ.
+
+already generates the leading order
+
+Proof of Proposition 3.3. Based on the epsilon-martingale decomposition approach, it is enough to ﬁnd a
+t being of order o(√ǫ). We present
+t + Rǫ
+decomposition M ǫ
+t are determined, with actual proofs delayed to Appendix A. Note that terms of order √ǫ
+how M ǫ
+are included in M ǫ
+
+t being a true martingale, and Rǫ
+
+t is pushed to a higher order.
+
+t so that Rǫ
+
+t, with M ǫ
+
+t and Rǫ
+
+t for Qǫ
+
+Applying Itˆo formula to v(0)(t, X π(0)
+
+) brings
+
+t
+
+dv(0)(t, X π(0)
+
+t
+
+))v(0)(t, X π(0)
+
+) dt + σ(Y ǫ,H
+
+)π(0)(t, X π(0)
+
+t
+
+t
+
+) = Lt,x(λ(Y ǫ,H
+2(cid:16)λ2(Y ǫ,H
+=
+
+1
+
+t
+
+) − λ
+
+2(cid:17) D1v(0)(t, X π(0)
+
+t
+
+t
+
+t
+) dt + dM (1)
+
+,
+
+t
+
+, Y ǫ,H
+
+t
+
+)v(0)
+
+x (t, X π(0)
+
+t
+
+) dWt
+
+(3.16)
+
+where M (1)
+
+t
+
+is the martingale given by
+
+x (t, X π(0)
+and the relations (3.15) and D1v(0)(t, x) = −D2v(0)(t, x) have been used.
+
+t = σ(Y ǫ,H
+
+)π(0)(t, X π(0)
+
+dM (1)
+
+, Y ǫ,H
+
+)v(0)
+
+t and ψǫ
+
+t deﬁned in (2.14) and (3.6) respectively, then, we have dψǫ
+
+Recall φǫ
+
+t
+
+t
+
+t
+
+t
+
+) dWt,
+
+(3.17)
+
+t− dφǫ
+
+t = 1
+
+2(cid:16)λ2(Y ǫ,H
+
+t
+
+) − λ
+
+2(cid:17) dt,
+
+and the ﬁrst term in (3.16) becomes
+
+1
+
+2(cid:16)λ2(Y ǫ,H
+
+) − λ
+To further simplify D1v(0)(t, X π(0)
+√ǫ, we compute the total diﬀerential of D1v(0)(t, X π(0)
+
+) dφǫ
+
+2(cid:17) D1v(0)(t, X π(0)
+
+t
+
+t
+
+t
+
+) dt = D1v(0)(t, X π(0)
+
+t
+
+) ( dψǫ
+
+t − dφǫ
+t) .
+
+t, which corresponds to ﬁnding the corrector to v(0)(t, X π(0)
+
+t
+
+)φǫ
+
+t (the arguments of v(0)(t, X π(0)
+
+t
+
+t
+
+) at order
+) will be omitted
+
+11
+
+)π(0)(t, X π(0)
+
+t
+
+, Y ǫ,H
+
+t
+
+)∂xD1v(0) dWt
+
+systematically in the following):
+
+d(cid:16)D1v(0)φǫ
+
+t(cid:17) = D1v(0) dφǫ
+
++ σ(Y ǫ,H
+
+t
+
+t + φǫ
+)π(0)(t, X π(0)
+
+t
+
+t
+
+t
+
+t
+
+tσ(Y ǫ,H
+
+tLt,x(λ(Y ǫ,H
+, Y ǫ,H
+t(cid:20) 1
+
+))D1v(0) dt + φǫ
+)∂xD1v(0) dhW, φǫit
+) − λ
+1v(0) dWt + ρλ(Y ǫ,H
+
+(λ2(Y ǫ,H
+
+)(D2 + 2D1)D1v(0)(cid:21) dt
+1v(0) d(cid:10)W Y , ψǫ(cid:11)t
+
+)D2
+
+2
+
+2
+
+t
+
+t
+
+= D1v(0) dφǫ
+
+t + φǫ
+
++ φǫ
+
+tλ(Y ǫ,H
+
+t
+
+)D2
+
+In the derivation, we have used the deﬁnition of D1 and R(t, x) (cf. (3.14)), and
+
+The results in Lemma A.1(i): d(cid:10)W Y , ψǫ(cid:11)t = ϑǫ
+
+Lt,x(λ)D1v(0) = D1Lt,x(λ)v(0) = 0, and dhW, φǫit = ρ d(cid:10)W Y , ψǫ(cid:11)t .
+t(cid:17) = −
+
+t(cid:20) 1
+2(cid:17) D1v(0) dt + φǫ
+
+2(cid:16)λ2(Y ǫ,H
+
+d(cid:16)D1v(0)φǫ
+
+(λ2(Y ǫ,H
+
+) − λ
+
+1
+
+2
+
+2
+
+t
+
+t
+
+t dt, together with the above derivation produce
+
+)(D2 + 2D1)D1v(0)(cid:21) dt
+
+) − λ
+1v(0)ϑǫ
+
++ ρλ(Y ǫ,H
+
+)D2
+
+t
+
+t dt + dM (2)
+
+t
+
+,
+
+and
+
+dM (2)
+
+t = D1v(0)(t, X π(0)
+
+t
+
+) dψǫ
+
+t + φǫ
+
+tλ(Y ǫ,H
+
+t
+
+)D2
+
+1v(0)(t, X π(0)
+
+t
+
+) dWt.
+
+(3.18)
+
+(3.19)
+
+From Lemma A.1(ii), we see that the second term in (3.18) is of order ǫ1−H, and thus it remains to
+analyze the third term ρλ(Y ǫ,H
+t dt. To this end, we rewrite v(1) in terms of D1 and v(0) by
+1v(0). Apply Itˆo’s formula again to v(1)
+v(1) = D2
+gives,
+
+1v(0)(T − t), and observe that it satisﬁes Lt,x(λ)v(1) = −D2
+
+1v(0)ϑǫ
+
+)D2
+
+t
+
+dv(1)(t, X π(0)
+
+t
+
+) = Lt,x(λ(Y ǫ,H
+(λ2(Y ǫ,H
+=
+
+t
+
+1
+2
+
+) − λ
+is the martingale deﬁned by
+
+t
+
+where M (3)
+
+t
+
+))v(1)(t, X π(0)
+
+t
+
+) dt + σ(Y ǫ,H
+
+t
+
+2
+
+)(D2 + 2D1)v(1)(t, X π(0)
+
+t
+
+t
+
+)π(0)(t, X π(0)
+) dt − D2
+
+, Y ǫ,H
+
+)v(1)
+1v(0)(t, X π(0)
+
+t
+
+t
+
+x (t, X π(0)
+
+t
+
+) dWt
+
+) dt + dM (3)
+
+t
+
+, (3.20)
+
+dM (3)
+
+t = σ(Y ǫ,H
+
+t
+
+)π(0)(t, X π(0)
+
+t
+
+, Y ǫ,H
+
+t
+
+)v(1)
+
+x (t, X π(0)
+
+t
+
+) dWt.
+
+(3.21)
+
+Deﬁning the quantity eQǫ
+eQǫ
+
+t by
+t(x) = v(0)(t, x) + D1v(0)(t, x)φǫ
+
+t + √ǫρDv(1)(t, x),
+
+and combining equation (3.16), (3.18) and (3.20) yields
+
+t(X π(0)
+
+t
+
+deQǫ
+
+) = d(cid:16)v(0)(t, X π(0)
+
+t
+
+= φǫ
+
+t(cid:20) 1
+
++
+
+1
+2
+
+t
+
+(λ2(Y ǫ,H
+) − λ
+2
+√ǫρD(λ2(Y ǫ,H
+t + dM (2)
+
+t
+
++ dM (1)
+
+) + D1v(0)(t, X π(0)
+
+t
+
+t + √ǫρDv(1)(t, X π(0)
+)φǫ
+
+t
+
+2
+
+)(D2 + 2D1)D1v(0)(cid:21) dt + ρ(cid:16)λ(Y 
