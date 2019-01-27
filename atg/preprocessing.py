@@ -1,6 +1,3 @@
-"""
-Converts PDF text content (though not images containing text) to plain text, html, xml or "tags".
-"""
 import argparse
 import logging
 import six
@@ -20,6 +17,9 @@ def extract_text(files=[], outfile='-',
             maxpages=0, page_numbers=None, password="", scale=1.0, rotation=0,
             layoutmode='normal', output_dir=None, debug=False,
             disable_caching=False, **other):
+    """Converts PDF text content (though not images containing text) to plain text, html, xml or "tags".
+    From pdfminer.six (https://github.com/pdfminer/pdfminer.six)
+    """
     if _py2_no_more_posargs is not None:
         raise ValueError("Too many positional arguments passed.")
     if not files:
@@ -61,3 +61,29 @@ def extract_text(files=[], outfile='-',
             pdfminer.high_level.extract_text_to_fp(fp, **locals())
     return outfp
 
+
+import json
+
+
+def flat_unique(path='data/arxiv_metadata.json'):
+    with open(path) as f:
+        paper_meta = json.load(f)
+
+    all_papers = []
+    ids = []
+    for field, papers in paper_meta.items():
+        for paper in papers:
+            all_papers.append(paper)
+            # Store Arxiv ID
+            ids.append(paper['id'])
+
+    # Truth map for unique list
+    # Way to deal with unhashable dicts issue
+    filled_ids = {id_: False for id_ in ids}
+    all_unique_papers = []
+    for paper in all_papers:
+        if not filled_ids[paper['id']]:
+            all_unique_papers.append(paper)
+            filled_ids[paper['id']] = True
+            
+    return all_unique_papers
