@@ -32,7 +32,6 @@ def large_query(**kwargs):
     return results
 
 
-# > Ugly PEP8
 def get_qfin(paper_search='', 
              max_results=8000,
              sort_by='lastUpdatedDate', 

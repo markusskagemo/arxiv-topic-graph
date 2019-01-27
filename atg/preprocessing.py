@@ -10,7 +10,7 @@ from pdfminer.image import ImageWriter
 
 
 def extract_text(files=[], outfile='-',
-            _py2_no_more_posargs=None,  # Bloody Python2 needs a shim
+            _py2_no_more_posargs=None,  
             no_laparams=False, all_texts=None, detect_vertical=None, # LAParams
             word_margin=None, char_margin=None, line_margin=None, boxes_flow=None, # LAParams
             output_type='text', codec='utf-8', strip_control=False,
@@ -41,10 +41,7 @@ def extract_text(files=[], outfile='-',
         imagewriter = ImageWriter(output_dir)
 
     if output_type == "text" and outfile != "-":
-        for override, alttype in (  (".htm", "html"),
-                                    (".html", "html"),
-                                    (".xml", "xml"),
-                                    (".tag", "tag") ):
+        for override, alttype in ((".htm", "html"), (".html", "html"), (".xml", "xml"), (".tag", "tag")):
             if outfile.endswith(override):
                 output_type = alttype
 
