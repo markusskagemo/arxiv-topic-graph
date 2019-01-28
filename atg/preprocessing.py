@@ -63,12 +63,19 @@ import json
 
 
 def flat_unique(path='data/arxiv_metadata.json'):
+    """Flatten metadata json file and remove duplicate papers.
+    
+    Parameters:
+        path: str
+    Returns:
+        all_unique_papers: list of dicts
+    """
     with open(path) as f:
         paper_meta = json.load(f)
 
     all_papers = []
     ids = []
-    for field, papers in paper_meta.items():
+    for papers in paper_meta.values():
         for paper in papers:
             all_papers.append(paper)
             # Store Arxiv ID

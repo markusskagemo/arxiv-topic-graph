@@ -63,6 +63,7 @@ def get_metadata(path='qfin-metadata.json'):
     
     
 def pdf_download(path='../data/qfin-metadata.json'):
+    """> Unfinished"""
     qfin = json.loads(path)
     for paper in qfin:
         arxiv.download(paper, '{}.txt'.format(paper['id'].split("/")[0]))
