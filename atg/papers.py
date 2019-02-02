@@ -56,14 +56,16 @@ def get_qfin(paper_search='',
 import json
 
 
-def get_metadata(path='qfin-metadata.json'):
+def get_metadata(path='data/arxiv_metadata.json'):
     """Get 8k most recent papers from for each category of q-fin Arxiv"""
     qfin = get_qfin()
     json.dumps(qfin, path)
     
     
-def pdf_download(path='../data/qfin-metadata.json'):
-    """> Unfinished"""
-    qfin = json.loads(path)
+def pdf_download(path='data/arxiv_metadata.json'):
+    """Download all """
+    from preprocessing import flat_unique
+    
+    qfin = flat_unique(path)
     for paper in qfin:
         arxiv.download(paper, '{}.txt'.format(paper['id'].split("/")[0]))
