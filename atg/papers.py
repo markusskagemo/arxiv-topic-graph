@@ -36,7 +36,7 @@ def get_qfin(paper_search='',
              max_results=8000,
              sort_by='lastUpdatedDate', 
              cats=['CP', 'EC', 'GN', 'MF', 'PM', 'PR', 'RM', 'ST', 'TR']):
-    """Query Arxiv quantitative finance. Ad-hoc hardcoded.
+    """Query Arxiv quantitative finance. Ad-hoc.
     
     Parameters:
         paper_search: string
