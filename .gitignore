@@ -2,3 +2,4 @@
 __pycache__
 /arxiv-topic-graph/data/.ipynb_checkpoints
 /arxiv-topic-graph/data/pdfs
+/arxiv-topic-graph/data/texts
