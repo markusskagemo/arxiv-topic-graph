@@ -91,3 +91,45 @@ def flat_unique(path='data/arxiv_metadata.json'):
             filled_ids[paper['id']] = True
             
     return all_unique_papers
+
+
+import os
+from gensim import corpora
+from nltk.stem.wordnet import WordNetLemmatizer
+from nltk.tokenize import RegexpTokenizer #?
+from nltk.corpus import stopwords
+
+
+def docs_preprocessor(docs):
+    """https://www.kaggle.com/ykhorramz/lda-and-t-sne-interactive-visualization"""
+    tokenizer = RegexpTokenizer(r'\w+')
+    for idx in range(len(docs)):
+        docs[idx] = docs[idx].lower()  # Convert to lowercase.
+        docs[idx] = tokenizer.tokenize(docs[idx])  # Split into words.
+
+    # Remove numbers, but not words that contain numbers.
+    docs = [[token for token in doc if not token.isdigit()] for doc in docs]
+    # Remove words that are only one character.
+    docs = [[token for token in doc if len(token) > 3] for doc in docs]
+    # Remove common stop words.
+    stops = set(stopwords.words('english'))
+    docs = [[token for token in doc if token not in stops] for doc in docs]
+    
+    # Lemmatize all words in documents.
+    lemmatizer = WordNetLemmatizer()
+    docs = [[lemmatizer.lemmatize(token) for token in doc] for doc in docs]
+  
+    return docs
+
+
+def corpus_tokens(TEXTPATH='data/texts/'):
+    texts = []
+    # Enumerate for debugging purposes
+    for cnt, filename in enumerate(os.listdir(TEXTPATH)):
+        if '.txt' not in filename:
+            continue
+        with open(TEXTPATH + filename, 'r') as f:
+            #print(filename)
+            texts.append(f.read())
+    
+    return docs_preprocessor(texts)
