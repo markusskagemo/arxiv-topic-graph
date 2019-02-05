@@ -128,7 +128,6 @@ def extract_text(files=[], outfile='-',
     else:
         outfp = open(outfile, "wb")
 
-
     for fname in files:
         with open(fname, "rb") as fp:
             pdfminer.high_level.extract_text_to_fp(fp, **locals())
