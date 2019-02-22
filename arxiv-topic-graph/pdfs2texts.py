@@ -13,8 +13,11 @@ def main():
         ofile = '%s/%s' % ('data/texts', filename.replace('.pdf', '.txt'))
 
         if filename.replace('.pdf', '.txt') not in textdir:
-            preprocessing.extract_text(files=[ifile], outfile=ofile)
-            print('{} > {}'.format(ifile, ofile))
+            try:
+                preprocessing.extract_text(files=[ifile], outfile=ofile)
+                print('{} > {}'.format(ifile, ofile))
+            except Exception as e:
+                print(e, ofile)
         else:
             print('File %s already exists. Skipping' % ofile)
 
