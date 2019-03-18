@@ -16,7 +16,6 @@ def texts_corpus(textdir='data/texts/'):
     """
     files = os.listdir(textdir)
     corpus = []
-    source_enum = {}
     for i, file in enumerate(files):
         if '.txt' not in file:
             continue
