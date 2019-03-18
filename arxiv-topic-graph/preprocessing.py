@@ -85,7 +85,6 @@ def doc_preprocessor(doc, lemmatize=True):
     doc_pre = [word for word in doc if word not in stops]
     
     if lemmatize:
-        # Lemmatize
         lemmatizer = WordNetLemmatizer()
         doc_pre = [lemmatizer.lemmatize(token) for token in doc_pre]
     
