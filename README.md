@@ -10,4 +10,4 @@
 pip3 install -r requirements.txt
 ```
 
-![Graph sample](arxiv-topic-graph/data/graph_smallsample.png)
+![Graph sample](arxiv-topic-graph/data/graph_smallsample.jpg)
