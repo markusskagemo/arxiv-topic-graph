@@ -40,7 +40,14 @@ from nltk.corpus import stopwords
 
 
 def docs_preprocessor(docs):
-    """https://www.kaggle.com/ykhorramz/lda-and-t-sne-interactive-visualization"""
+    """Simple preprocessing of docs.
+    https://www.kaggle.com/ykhorramz/lda-and-t-sne-interactive-visualization
+    
+    Parameters:
+        docs: list of list of str
+    Returns:
+        docs: list of list of str
+    """
     tokenizer = RegexpTokenizer(r'\w+')
     for idx in range(len(docs)):
         docs[idx] = docs[idx].lower()  # Convert to lowercase.
@@ -61,7 +68,39 @@ def docs_preprocessor(docs):
     return docs
 
 
+def doc_preprocessor(doc, lemmatize=True):
+    """Simple preprocessing of a single document string.
+    
+    Parameters:
+        doc: str
+        lemmatize: bool
+            Whether or not to lemmatize the document
+    """
+    # Remove newlines and split on spaces
+    doc = doc.replace('\n', ' ').split()
+    # Lowercase
+    doc = [word.lower() for word in doc]
+    # Remove english stop words
+    stops = set(stopwords.words('english'))
+    doc_pre = [word for word in doc if word not in stops]
+    
+    if lemmatize:
+        # Lemmatize
+        lemmatizer = WordNetLemmatizer()
+        doc_pre = [lemmatizer.lemmatize(token) for token in doc_pre]
+    
+    return doc_pre
+
+
 def corpus_tokens(TEXTPATH='data/texts/'):
+    """Import and preprocess documents from custom path.
+    
+    Parameters:
+        TEXTPATH: str
+    Returns:
+        docs_preprocessor: list or lists of str
+            As described in docs_preprocessor help
+    """
     texts = []
     # Enumerate for debugging purposes
     for cnt, filename in enumerate(os.listdir(TEXTPATH)):

@@ -1,25 +1,42 @@
-from gensim.models import LdaModel, LdaMulticore
+import os
+import preprocessing
+from gensim import corpora
+from gensim.models.doc2vec import TaggedDocument
 
-def placeholder():
-    # Set training parameters.
-    num_topics = 40
-    chunksize = 50 # size of the doc looked at every pass
-    passes = 5 # number of passes through documents
-    iterations = 10
-    eval_every = 1  # Don't evaluate model perplexity, takes too much time.
 
-    # Make a index to word dictionary.
-    temp = dictionary[0]  # This is only to "load" the dictionary.
-    id2word = dictionary.id2token
-
-    # Run multicore LDA model
-    %time model = LdaMulticore(corpus=corpus, id2word=id2word, chunksize=chunksize, \
-                               num_topics=num_topics, passes=passes, iterations=iterations)
+def texts_corpus(textdir='data/texts/'):
+    """Create a preprocessed corpus for doc2vec training.
     
-    import pyLDAvis.gensim
-    pyLDAvis.enable_notebook()
+    Parameters:
+        textdir: str
+            Path of text files
+    Returns:
+        corpus: list of gensim.models.doc2vec.TaggedDocument objects
+            Tagged by arxiv ID
+    """
+    files = os.listdir(textdir)
+    corpus = []
+    source_enum = {}
+    for i, file in enumerate(files):
+        if '.txt' not in file:
+            continue
+        with open(textdir + file) as f:
+            t = f.read()
+            corpus.append(
+                TaggedDocument(
+                    words=preprocessing.doc_preprocessor(t, lemmatize=False),
+                    tags=[file.strip('.txt')])
+            )
+            
+    return corpus
 
-    import warnings
-    warnings.filterwarnings("ignore", category=DeprecationWarning) 
 
-    pyLDAvis.gensim.prepare(model, corpus, dictionary)
+if __name__ == '__main__':
+    train_corpus = texts_corpus()
+
+    model = gensim.models.doc2vec.Doc2Vec(vector_size=100, min_count=2, epochs=100)
+    model.build_vocab(train_corpus)
+    model.train(train_corpus, total_examples=model.corpus_count, epochs=model.epochs)
+    
+    model.save('data/doc2vec.model')
+    
