@@ -5,9 +5,10 @@
 4. Network graphing informational distance.  
 
 
-#### Linux or OSX  
+#### Linux and OSX  
 ```
 pip3 install -r requirements.txt
 ```
 
 ![Graph sample](arxiv-topic-graph/data/graph_smallsample.jpg)
+*Arxiv quantitative finance categories: 'CP': 'red', 'EC': 'blue', 'GN': 'green', 'MF': 'grey', 'PM': 'black', 'PR': 'yellow','RM': 'violet', 'ST': 'orange', 'TR': 'pink'*
