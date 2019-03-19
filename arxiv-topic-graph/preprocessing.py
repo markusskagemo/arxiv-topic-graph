@@ -75,6 +75,9 @@ def doc_preprocessor(doc, lemmatize=True):
         doc: str
         lemmatize: bool
             Whether or not to lemmatize the document
+    Returns:
+        doc_pre: list of str
+            Preprocessed document
     """
     # Remove newlines and split on spaces
     doc = doc.replace('\n', ' ').split()

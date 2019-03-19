@@ -5,9 +5,14 @@
 4. Network graphing informational distance.  
 
 
-#### Linux and OSX  
+##### Linux and OSX 
 ```
-pip3 install -r requirements.txt
+pip3 install -r requirements.txt  
+npm install vis
+```
+##### Launch vis.js network representation of q-fin  
+```
+./examples/launch.sh
 ```
 
 ![Graph sample](arxiv-topic-graph/data/graph_smallsample.jpg)  
