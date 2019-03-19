@@ -37,5 +37,5 @@ if __name__ == '__main__':
     model.build_vocab(train_corpus)
     model.train(train_corpus, total_examples=model.corpus_count, epochs=model.epochs)
     
-    model.save('data/doc2vec.model')
+    model.save('data/doc2vec_1.model')
     
