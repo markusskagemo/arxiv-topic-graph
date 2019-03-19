@@ -12,3 +12,13 @@ pip3 install -r requirements.txt
 
 ![Graph sample](arxiv-topic-graph/data/graph_smallsample.jpg)  
 **Arxiv quantitative finance categories:** *'CP': 'red', 'EC': 'blue', 'GN': 'green', 'MF': 'grey', 'PM': 'black', 'PR': 'yellow','RM': 'violet', 'ST': 'orange', 'TR': 'pink'*
+  
+CP - Computational Finance  
+EC - Economics  
+GN - General Finance  
+MF - Mathematical Finance  
+PM - Portfolio Management  
+PR - Pricing of Securities  
+RM - Risk Management  
+ST - Statistical Finance  
+TR - Trading and Market Microstructure  
