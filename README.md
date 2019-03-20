@@ -18,9 +18,11 @@ chmod a+rx examples/launch.sh
 Refresh the site.  
 
 
-![Graph sample](arxiv-topic-graph/data/qfin_net.jpg)
-![Zoom graph](arxiv-topic-graph/data/zoom.jpg)  
-**Arxiv quantitative finance categories:** *'CP': 'red', 'EC': 'blue', 'GN': 'green', 'MF': 'grey', 'PM': 'black', 'PR': 'yellow','RM': 'violet', 'ST': 'orange', 'TR': 'pink'*
+![Graph sample](arxiv-topic-graph/data/screen.png)  
+Graph zoom sample:
+![Zoom graph](arxiv-topic-graph/data/screen2.png)  
+**Arxiv quantitative finance categories:**  
+*'CP': 'red', 'EC': 'blue', 'GN': 'green', 'MF': 'grey', 'PM': 'black', 'PR': 'yellow','RM': 'violet', 'ST': 'orange', 'TR': 'pink'*
   
 CP - Computational Finance  
 EC - Economics  

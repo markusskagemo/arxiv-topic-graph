@@ -1,5 +1,6 @@
 import os
 import preprocessing
+import gensim
 from gensim import corpora
 from gensim.models.doc2vec import TaggedDocument
 

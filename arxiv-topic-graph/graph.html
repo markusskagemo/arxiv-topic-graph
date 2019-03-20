@@ -102,11 +102,15 @@
         }
       }
     },
+    layout : {
+    	improvedLayout: false
+    },
+
     // http://visjs.org/docs/network/physics.html#
     physics: {
       enabled: true,
       barnesHut: {
-        gravitationalConstant: -2000,
+        gravitationalConstant: -8000,
         centralGravity: 0.3,
         // springLength: 95,
         springLength: 175,
@@ -136,12 +140,13 @@
         nodeDistance: 120,
         damping: 0.09
       },
-      maxVelocity: 100,
+      maxVelocity: 50,
       minVelocity: 0.1,
       solver: 'barnesHut',
       stabilization: {
         enabled: true,
-        iterations: 1000,
+        //iterations: 1000,
+	iterations: 500,
         updateInterval: 100,
         onlyDynamicEdges: false,
         fit: true
